@@ -14,7 +14,6 @@ public class LibraryService {
     public boolean addStudent(String wholeInfoStr) {
         String[] infoStrs = trim(wholeInfoStr.split(","));
         if (infoStrs.length < 3 || infoStrs[0].split(":").length > 1 || infoStrs[1].split(":").length > 1) {
-            System.out.println("A");
             return false;
         }
 
@@ -23,14 +22,12 @@ public class LibraryService {
         for (int i = 2; i < infoStrs.length; i++) {
             String[] parts = infoStrs[i].split(":");
             if (parts.length != 2) {
-                System.out.println("B");
                 return false;
             }
 
             if (numberFormat.matcher(parts[1]).matches()) {
                 student.addGrade(parts[0], Float.parseFloat(parts[1]));
             } else {
-                System.out.println("C");
                 return false;
             }
         }
